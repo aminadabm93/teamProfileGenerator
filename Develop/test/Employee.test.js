@@ -1,7 +1,8 @@
 const Employee = require("../lib/Employee");
 
+
 test("Can instantiate Employee instance", () => {
-  const e = new Employee();
+  const e = new Employee("name","22","email");
   expect(typeof(e)).toBe("object");
 });
 
