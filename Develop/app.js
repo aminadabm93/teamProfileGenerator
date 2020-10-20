@@ -1,7 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const inquirer = require("inquirer");/////////////////////////////////
+const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
@@ -53,7 +53,7 @@ async function createEmployee(){
             name: "office",
             type: "input"
         });
-        let office = managerInput.github;
+        let office = managerInput.office;
 
         roster.push( new Manager(response.name,response.id,response.email, office));
     }
@@ -89,7 +89,6 @@ async function init(){
         }
         else{
             addMore=false;
-            console.log(roster);
         } 
     }
 
@@ -117,7 +116,7 @@ async function init(){
         });
         
         //now write to file 
-        fs.writeFile("./output/index.html",allHTML,function(err){
+        fs.writeFile("./output/team.html",allHTML,function(err){
             if(err){
                 throw (err);
             }
