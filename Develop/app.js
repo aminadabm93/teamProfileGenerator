@@ -95,18 +95,41 @@ async function init(){
 
     //create html code
     var allHTML = render(roster);
-    //create html file 
-    
+    //create html file if the output folder has been created
+    //if output folder exits exits
+
+
+    // check if directory exists
+    if (fs.existsSync(OUTPUT_DIR)) {
+        //if it exists, create file 
+        fs.writeFile(outputPath,allHTML,function(err){
+        if(err){
+            throw (err);
+        }
+        console.log("Your file has successfuly been created!");
+        });
+    } else {
+        //create directory
+        fs.mkdir("./output/",{recursive:true},function(err){
+            if(err){
+                throw (err);
+            }; 
+        });
+        
+        //now write to file 
+        fs.writeFile("./output/index.html",allHTML,function(err){
+            if(err){
+                throw (err);
+            }
+            console.log("Your file has successfuly been created 2!");
+        });
+    }
+   
 }
 
 init();
 
 
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
 
 
 
